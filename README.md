@@ -49,7 +49,7 @@ Signer supports all browsers except Brave.
 * To install Signer library use
 
    ```bash
-   npm i @waves/signer
+   npm i kss-signer
    ```
 
 * To install ProviderSeed developed by Waves team, use
@@ -89,14 +89,14 @@ Add library initialization to your app.
 * For Testnet & ProviderSeed:
 
    ```js
-   import { Signer } from '@waves/signer';
+   import { Signer } from 'kss-signer';
    import { ProviderSeed } from '@waves/provider-seed';
    import { libs } from '@waves/waves-transactions';
 
    const seed = libs.crypto.randomSeed(15);
    const signer = new Signer({
      // Specify URL of the node on Testnet
-     NODE_URL: 'https://nodes-testnet.wavesnodes.com'
+     NODE_URL: 'https://nodes.krossexplorer.com'
    });
    signer.setProvider(new ProviderSeed(seed));
    ```
@@ -104,12 +104,12 @@ Add library initialization to your app.
 * For Testnet & Waves.Exchange ProviderWeb:
 
    ```js
-   import { Signer } from '@waves/signer';
+   import { Signer } from 'kss-signer';
    import { ProviderWeb } from '@waves.exchange/provider-web';
    
    const signer = new Signer({
      // Specify URL of the node on Testnet
-     NODE_URL: 'https://nodes-testnet.wavesnodes.com'
+     NODE_URL: 'https://nodes.krossexplorer.com'
    });
    signer.setProvider(new ProviderWeb('https://testnet.waves.exchange/signer/'))
    ```
@@ -117,12 +117,12 @@ Add library initialization to your app.
 * For Testnet & Waves.Exchange ProviderCloud:
 
    ```js
-   import { Signer } from '@waves/signer';
+   import { Signer } from 'kss-signer';
    import { ProviderCloud } from '@waves.exchange/provider-cloud';
    
    const signer = new Signer({
      // Specify URL of the node on Testnet
-     NODE_URL: 'https://nodes-testnet.wavesnodes.com'
+     NODE_URL: 'https://nodes.krossexplorer.com'
    });
    signer.setProvider(new ProviderCloud('https://testnet.waves.exchange/signer/'))
    ```
@@ -130,7 +130,7 @@ Add library initialization to your app.
 * For Mainnet & Waves.Exchange ProviderWeb:
 
    ```js
-   import { Signer } from '@waves/signer';
+   import { Signer } from 'kss-signer';
    import { ProviderWeb } from '@waves.exchange/provider-web';
    
    const signer = new Signer();
@@ -140,7 +140,7 @@ Add library initialization to your app.
 * For Mainnet & Waves.Exchange ProviderCloud:
 
    ```js
-   import { Signer } from '@waves/signer';
+   import { Signer } from 'kss-signer';
    import { ProviderCloud } from '@waves.exchange/provider-cloud';
    
    const signer = new Signer();
@@ -157,11 +157,11 @@ Now your application is ready to work with Waves blockchain. Let's test it by im
 const user = await signer.login();
 const balances = await signer.getBalance();
 const [broadcastedTransfer] = await signer
-  .transfer({amount: 100000000, recipient: 'alias:T:merry'}) // Transfer 1 WAVES to alias merry
+  .transfer({amount: 100000000, recipient: 'alias:T:merry'}) // Transfer 1 KSS to alias merry
   .broadcast(); // Promise will resolved after user sign and node response
 
 const [signedTransfer] = await signer
-  .transfer({amount: 100000000, recipient: 'alias:T:merry'}) // Transfer 1 WAVES to alias merry
+  .transfer({amount: 100000000, recipient: 'alias:T:merry'}) // Transfer 1 KSS to alias merry
   .sign(); // Promise will resolved after user sign
 ```
 
@@ -185,7 +185,7 @@ Parameters:
 
 | Parameter | Default value | Description |
 | :--- | :--- | :--- |
-| NODE_URL | https://nodes.wavesnodes.com | Node that is used to access a blockchain |
+| NODE_URL | https://nodes.krossexplorer.com | Node that is used to access a blockchain |
 
 <!-- | MATCHER_URL | https://matcher.waves.exchange/ | Matcher that is used to serve orders | -->
 
@@ -294,8 +294,8 @@ const balances = await signer.getBalance();
 
 ```js
 [{
-  assetId: 'WAVES',
-  assetName: 'Waves',
+  assetId: 'KSS',
+  assetName: 'Krosscoin',
   decimals: 8,
   amount: 100000000,
   isMyAsset: false,
@@ -322,10 +322,10 @@ const balances = await signer.getBalance();
 | assetId | Base58 encoded ID of the asset |
 | assetName | Name of the asset |
 | decimals | Number of decimal places in the asset amount |
-| amount | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of WAVES is 8, so the real amount is multipied by 10^8. `{ "WAVES": 677728840 }` means 6.77728840 |
+| amount | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of KSS is 8, so the real amount is multipied by 10^8. `{ "KSS": 677728840 }` means 6.77728840 |
 | isMyAsset | `true` if current user is an asset issuer |
 | tokens | Amount of asset to display in app interface |
-| sponsorship | Amount of sponsored asset to be charged to users (per 0.001 WAVES) multiplied by 10^`decimals`<br>`null` if the asset is not sponsored |
+| sponsorship | Amount of sponsored asset to be charged to users (per 0.001 KSS) multiplied by 10^`decimals`<br>`null` if the asset is not sponsored |
 | isSmart | `true` for [smart assets](https://docs.waves.tech/en/building-apps/smart-contracts/what-is-smart-asset) |
 
 <a id="getsponsoredbalances"></a>
@@ -479,7 +479,7 @@ burn(data: {
 | Parameter name | Default value | Description |
 | :--- | :--- | :--- |
 | assetId* | | Base58 encoded ID of the asset to burn |
-| quantity* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of WAVES is 8, so the real amount is multipied by 10^8. `{ "WAVES": 677728840 }` means 6.77728840 |
+| quantity* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of KSS is 8, so the real amount is multipied by 10^8. `{ "KSS": 677728840 }` means 6.77728840 |
 
 \* Required parameter.
 
@@ -644,14 +644,14 @@ invoke(data: {
 | dApp* | | Base58 encoded address or alias (with `alias:T:` prefix) of the dApp whose script should be invoked |
 | fee | | We recommend to specify fee depending on number of action performed by called function (see [Transaction Fee](https://docs.waves.tech/en/blockchain/transaction/transaction-fee)) |
 | payment | | Payments attached to the transaction. Maximum of two payments |
-| payment.assetId* | | Base58 encoded ID of the asset to pay. `WAVES` or `null` means WAVES |
-| payment.amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of WAVES is 8, so the real amount is multipied by 10^8. `{ "WAVES": 677728840 }` means 6.77728840 |
+| payment.assetId* | | Base58 encoded ID of the asset to pay. `KSS` or `null` means KSS |
+| payment.amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of KSS is 8, so the real amount is multipied by 10^8. `{ "KSS": 677728840 }` means 6.77728840 |
 | call | Default function should be invoked in the dApp | Parameters for called function |
 | call.function* | | Name of the function that is called |
 | call.args* | | Arguments for the function  that is called |
 | call.args.type* | | Type of argument |
 | call.args.value* | | Value of argument |
-| feeAssetId | WAVES | Base58 encoded ID of the sponsored asset to pay the fee. See the [Sponsored Fee](https://docs.waves.tech/en/blockchain/waves-protocol/sponsored-fee) article for more information. `null` or omitted field means WAVES |
+| feeAssetId | KSS | Base58 encoded ID of the sponsored asset to pay the fee. See the [Sponsored Fee](https://docs.waves.tech/en/blockchain/waves-protocol/sponsored-fee) article for more information. `null` or omitted field means KSS |
 
 \* Required parameter.
 
@@ -744,7 +744,7 @@ lease(data: {
 
 | Parameter name | Default value | Description |
 | :--- | :--- | :--- |
-| amount* | | Amount of WAVES multiplied by 10^8. For example, `{ "WAVES": 677728840 }` means 6.77728840 |
+| amount* | | Amount of KSS multiplied by 10^8. For example, `{ "KSS": 677728840 }` means 6.77728840 |
 | recipient* | | Base58 encoded [address](https://docs.waves.tech/en/blockchain/account/address) or alias (with `alias:T:` prefix) of the recipient |
 
 \* Required parameter.
@@ -784,9 +784,9 @@ massTransfer(data: {
 
 | Parameter name | Default value | Description |
 | :--- | :--- | :--- |
-| assetId | WAVES | Base58 encoded ID of the asset to transfer |
+| assetId | KSS | Base58 encoded ID of the asset to transfer |
 | transfers* | | List of transfers |
-| transfers.amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of WAVES is 8, so the real amount is multipied by 10^8. `{ "WAVES": 677728840 }` means 6.77728840 |
+| transfers.amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of KSS is 8, so the real amount is multipied by 10^8. `{ "KSS": 677728840 }` means 6.77728840 |
 | transfers.recipient* | | Base58 encoded [address](https://docs.waves.tech/en/blockchain/account/address) or alias (with `alias:T:` prefix) of the recipient |
 | attachment | | Optional binary data base58 encoded. This field is often used to attach a comment to the transaction. The maximum data size is 140 bytes |
 
@@ -940,7 +940,7 @@ sponsorship(data: {
 | Parameter name | Default value | Description |
 | :--- | :--- | :--- |
 | assetId* | | Base58 encoded ID of the asset |
-| minSponsoredAssetFee | | Required amount of sponsored token to be charged to users (per 0.001 WAVES) multiplied by 10^`decimals` |
+| minSponsoredAssetFee | | Required amount of sponsored token to be charged to users (per 0.001 KSS) multiplied by 10^`decimals` |
 
 \* Required parameter.
 
@@ -979,10 +979,10 @@ transfer(data: {
 | Parameter name | Default value | Description |
 | :--- | :--- | :--- |
 | recipient* | | Base58 encoded [address](https://docs.waves.tech/en/blockchain/account/address) or alias (with `alias:T:` prefix) of the recipient |
-| amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of WAVES is 8, so the real amount is multipied by 10^8. `{ "WAVES": 677728840 }` means 6.77728840 |
-| assetId | WAVES | Base58 encoded ID of the asset to transfer. `null` or omitted field means WAVES |
+| amount* | | Amount of asset multiplied by 10^`decimals`. For example, `decimals` of KSS is 8, so the real amount is multipied by 10^8. `{ "KSS": 677728840 }` means 6.77728840 |
+| assetId | KSS | Base58 encoded ID of the asset to transfer. `null` or omitted field means KSS |
 | attachment | | Optional binary data base58 encoded. This field is often used to attach a comment to the transaction. The maximum data size is 140 bytes |
-| feeAssetId | WAVES | Base58 encoded ID of the sponsored asset to pay the fee. See the [Sponsored Fee](https://docs.waves.tech/en/blockchain/waves-protocol/sponsored-fee) article for more information. `null` or omitted field means WAVES |
+| feeAssetId | KSS | Base58 encoded ID of the sponsored asset to pay the fee. See the [Sponsored Fee](https://docs.waves.tech/en/blockchain/waves-protocol/sponsored-fee) article for more information. `null` or omitted field means KSS |
 
 \* Required parameter.
 
