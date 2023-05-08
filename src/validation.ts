@@ -27,7 +27,7 @@ import {
     orderValidator,
     isValidAliasName,
 } from './validators';
-import { TRANSACTION_TYPE, TransactionType } from '@waves/ts-types';
+import { TRANSACTION_TYPE, TransactionType } from '@krosschain/ts-types';
 import { SignerOptions } from '.';
 
 type TLong = string | number;
@@ -116,7 +116,7 @@ export const reissueArgsValidator = validator(reissueArgsScheme, 'reissue');
 
 export const burnArgsScheme = {
     ...getCommonValidators(TRANSACTION_TYPE.BURN),
-    // TODO isAssetId (not WAVES)
+    // TODO isAssetId (not KSS)
     assetId: isString,
     amount: isNumberLike,
     chainId: validateOptional(isNumber),
@@ -188,7 +188,7 @@ export const setScriptArgsValidator = validator(
 
 export const sponsorshipArgsScheme = {
     ...getCommonValidators(TRANSACTION_TYPE.SPONSORSHIP),
-    // TODO Add not WAVES ASSET ID
+    // TODO Add not KSS ASSET ID
     assetId: isString,
     minSponsoredAssetFee: isNumberLike,
 };

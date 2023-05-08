@@ -23,7 +23,7 @@ import {
     TransactionMap,
     WithId,
     BaseTransaction,
-} from '@waves/ts-types';
+} from '@krosschain/ts-types';
 
 export interface TypedData {
     /**
@@ -218,7 +218,7 @@ export type Balance = {
     /**
      * Amount of money on balance
      * returned in minimum indivisible parts
-     * for example 1 WAVES = 100000000 in this API
+     * for example 1 KSS = 100000000 in this API
      */
     amount: Long;
     /**
@@ -229,7 +229,7 @@ export type Balance = {
     tokens: Long;
     /**
      * If there is a field, then it contains a rate for paying a commission
-     * (to 0.001 WAVES)
+     * (to 0.001 KSS)
      */
     sponsorship?: Long | null;
     assetId: string;

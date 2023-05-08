@@ -254,8 +254,8 @@ export class Signer {
                 this._options.NODE_URL,
                 this._userData!.address
             ).then((data) => ({
-                assetId: 'WAVES',
-                assetName: 'Waves',
+                assetId: 'KSS',
+                assetName: 'Krosscoin',
                 decimals: 8,
                 amount: String(data.available),
                 isMyAsset: false,
@@ -281,7 +281,7 @@ export class Signer {
                     isSmart: !!item.issueTransaction.script,
                     sponsorship:
                         item.sponsorBalance != null &&
-                        item.sponsorBalance > Math.pow(10, 8) &&
+                        Number(item.sponsorBalance) > Math.pow(10, 8) &&
                         (item.minSponsoredAssetFee || 0) < item.balance
                             ? item.minSponsoredAssetFee
                             : null,

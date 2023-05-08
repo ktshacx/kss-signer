@@ -11,7 +11,7 @@ import includes from 'ramda/src/includes';
 import flip from 'ramda/src/flip';
 import always from 'ramda/src/always';
 import tryCatch from 'ramda/src/tryCatch';
-import { base58Decode } from '@waves/ts-lib-crypto';
+import { base58Decode } from '@krosschain/ts-lib-crypto';
 
 const TX_DEFAULTS = {
     MAX_ATTACHMENT: 140,
@@ -159,7 +159,7 @@ export const isValidAssetDescription = validatePipe(
 
 export const isAssetId = validatePipe(
     ifElse(
-        orEq(['', null, undefined, 'WAVES']),
+        orEq(['', null, undefined, 'KSS']),
         defaultTo(true),
         isString,
     ),
@@ -199,7 +199,7 @@ const orderScheme = {
 };
 
 const v12OrderScheme = {
-    matcherFeeAssetId: orEq([undefined, null, 'WAVES']),
+    matcherFeeAssetId: orEq([undefined, null, 'KSS']),
 };
 
 const v3OrderScheme = {
