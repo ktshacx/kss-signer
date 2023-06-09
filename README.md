@@ -390,7 +390,7 @@ Each create transaction method has optional fields that you don't specify manual
 
 | Field name | Description | Default value |
 | :--- | :--- | :--- |
-| chainId | 'W'.charCodeAt(0) or 87 means Mainnet<br/>'T'.charCodeAt(0) or 84 means Testnet | Defined by configuration of Waves node that is set in [Constructor](#constructor) |
+| chainId | 'W'.charCodeAt(0) or 78 means Mainnet<br/>'T'.charCodeAt(0) or 84 means Testnet | Defined by configuration of Waves node that is set in [Constructor](#constructor) |
 | fee | Transaction fee | Calculated automatically as described in [Transaction fee](https://docs.waves.tech/en/blockchain/transaction/transaction-fee) section |
 | proofs | Array of transaction signatures | Added by `sign` or `broadcast` method (see [How to Sign and Broadcast Transactions](#how-to-sign-and-broadcast-transactions)). If you specify a proof manually, it is also added to the array |
 | senderPublicKey | Base58 encoded public key of transaction sender | Returned by [login](#login) method |
